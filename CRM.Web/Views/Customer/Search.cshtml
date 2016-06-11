@@ -1,0 +1,167 @@
+﻿
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-5">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Search Customers -  <small>Select Fields:</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <label class="control-label col-md-4">FrequentFlyerID</label>
+                            <div class="col-md-8">
+                                <input type="text" id="FrequentFlyerID" name="FrequentFlyerID" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Customer ID</label>
+                            <div class="col-md-8">
+                                <input type="text" id="CustomerID" name="CustomerID" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">FullName</label>
+                            <div class="col-md-8">
+                                <input type="text" id="FullName" name="FullName" class="form-control" />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Mobile</label>
+                            <div class="col-md-8">
+                                <input type="text" id="Mobile" name="Mobile" class="form-control" />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Phone</label>
+                            <div class="col-md-8">
+                                <input type="text" id="Phone" name="Phone" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Email</label><div class="col-md-8">
+                                <input type="text" id="Email" name="Email" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">ServiceCode</label> <div class="col-md-8">
+                                <input type="text" id="ServiceCode" name="ServiceCode" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">ProductSerial</label>
+                            <div class="col-md-8">
+                                <input type="text" id="ProductSerial" name="ProductSerial" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">InteractionCode</label>
+                            <div class="col-md-8">
+                                <input type="text" id="InteractionCode" name="InteractionCode" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3 col-xs-3 col-md-offset-2">
+                                <input id="btnSearch" type="button" value="Search" class="btn btn-primary" onclick="Search(); return false;" />
+                                
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <input type="submit" value="Add New Customer" class="btn btn-success" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+               
+        </div>
+        <div class="col-md-7">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Interactions -  <small>Latest 10 </small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" style="overflow-x:scroll;width:100%;">
+                    <br />
+                   @Html.Action("_Latest","Interaction")
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Search Results -  <small>Based on Search Filter</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                   
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                
+                <div id="SearchResultContent">
+                    <p class="text-muted font-13 m-b-30">
+                       
+                No Search Result Found
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+                                }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/datatable")
+    @Scripts.Render("~/bundles/search")
+}

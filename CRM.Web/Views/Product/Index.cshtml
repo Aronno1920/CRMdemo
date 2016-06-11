@@ -1,0 +1,86 @@
+﻿@*@model IEnumerable<CRM.Web.Entity.Model.ProductEntity>*@
+@model CRM.Web.Utility.PagedList<CRM.Entity.Model.ProductEntity>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Product Index</h2>
+@Scripts.Render("~/bundles/jquery")
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title">Add New Product</h3>
+</div>
+<div class="well">
+    @using (Html.BeginForm("Index", null, FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="input-group">
+
+                    <input type="text"
+                           name="filter"
+                           value="@ViewBag.filter"
+                           class="form-control"
+                           style="display: inline"
+                           placeholder="Search by model and serial number" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Go</button>
+                    </span>
+
+                </div>
+            </div>
+            <div class="pull-right col-lg-1">
+                <a class="btn btn-success" data-modal="" href="/Product/Create" id="btnCreate">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+        </div>
+
+        <div style="margin-top:17px;">
+            @{
+                var grid = new WebGrid(
+                            canPage: true,
+                            rowsPerPage: Model.PageSize,
+                            canSort: true,
+                            ajaxUpdateContainerId: "grid");
+
+                grid.Bind(Model.Content, rowCount: Model.TotalRecords, autoSortAndPage: false);
+                grid.Pager(WebGridPagerModes.All);
+
+                @grid.GetHtml(htmlAttributes: new { id = "grid" },   // id for ajaxUpdateContainerId parameter
+            fillEmptyRows: false,
+            tableStyle: "table table-bordered table-hover",
+            mode: WebGridPagerModes.All,
+            columns: grid.Columns(
+              grid.Column("ID", "ID"),
+              grid.Column("Model", "Model"),
+              grid.Column("SerialNumber", "SerialNumber"),
+               grid.Column("UpdatedDate", "UpdateDate"),
+              @*grid.Column("Price", header: "Price", format: @<text>@String.Format("{0:C}", item.Price) </text>),*@
+              grid.Column(header: "Action", canSort: false, style: "action",
+                format: @<text>
+                @Html.Raw("<a data-modal='' href='/product/details/" + item.id + "' id='" + item.id + "' title='Detail'> <span class='glyphicon glyphicon-search'> </span> </a>")
+                @Html.Raw("<a data-modal='' href='/product/edit/" + item.id + "' id='" + item.id + "' title='Edit'> <span class='glyphicon glyphicon-edit'> </span> </a>")
+                @Html.Raw("<a data-modal='' href='/product/delete/" + item.id + "' id='" + item.id + "' title='Delete'> <span class='glyphicon glyphicon-trash'> </span> </a>")
+                </text>)
+
+            ));
+            }
+
+
+        </div>
+    }
+</div>
+
+<!-- modal placeholder-->
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/product")
+}

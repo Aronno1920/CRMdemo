@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CRM.Web.Models.LatestInteractionVM>
+    <style>
+        th.hide_column, td.hide_column {display: none;}
+    </style>
+<table id="LatetestInteractionContent" class="table display nowrap" cellspacing="0" style="width:100%">
+    <thead>
+        <tr>
+            
+            <th>
+                #
+            </th>
+            <th class="hide_column">
+                Customer ID
+            </th>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Service Code
+            </th>
+            <th>
+                Interaction Created Date
+            </th>
+            @*<th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @{int rowNo = 0;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(rowNo += 1)
+                </td>
+                <td class="hide_column">
+                    @Html.DisplayFor(modelItem => item.CustomerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InteractionCreatedDate)
+                </td>
+
+
+                @*<td>
+                    @Html.ActionLink("Edit", "../CustomerService/Edit", new { id = item.CustomerID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
+

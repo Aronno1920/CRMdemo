@@ -1,0 +1,113 @@
+﻿@model CRM.Entity.Model.ProductEntity
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+    
+}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title">Product Detail</h3>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="SerialNumber">Serial Number</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.SerialNumber, new { @class = "form-control required", @disabled = "disabled" })              
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="Category_Name">Category</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.Category.Name, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="Type_Name">Type</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.Type.Name, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="Model">Model</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.Model, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="PoPDate">Pop Date</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.PoPDate, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="WarrantyStartDate">Warranty Start Date</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.WarrantyStartDate, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="WarrantyExiredDate">Warranty Exired Date</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.WarrantyExiredDate, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="WarrantyCode">Warranty Code</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.WarrantyCode, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="WarrantyDescription">Warranty Description</label>
+            <div class="col-sm-8">
+                @Html.TextAreaFor(model => model.WarrantyDescription, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="ShippingDate">Shipping Date</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.ShippingDate, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="ShippingCountry">Shipping Country</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.ShippingCountry.Name, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4">Created By</label>
+            <div class="col-sm-8">
+                <label class="control-label">Data not yet set</label>  
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="CreatedDate">Created Date & Time</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.CreatedDate, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class = "control-label col-sm-4">Updated By</label>           
+           
+            <div class="col-sm-8">
+                <label class="control-label">Data not yet set</label>     
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="UpdatedDate">Updated Dat & Time</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.UpdatedDate, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+    </div>
+</div>
+   
+<div class="modal-footer">
+    @*<input class="btn btn-primary" type="submit" name="EditDetails" value="Update" />*@
+    <button class="btn btn-warning" data-dismiss="modal">Close</button>
+    
+</div>
+

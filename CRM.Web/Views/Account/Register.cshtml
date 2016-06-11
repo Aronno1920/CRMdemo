@@ -1,0 +1,150 @@
+﻿@model CRM.Web.Models.ExtendedIdentityModels
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<style>
+    .separator {
+        border-right: 1px solid #dfdfe0;
+    }
+
+    .icon-btn-save {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .input-group {
+        margin-bottom: 10px;
+    }
+
+    .btn-save-label {
+        position: relative;
+        left: -12px;
+        display: inline-block;
+        padding: 6px 12px;
+        background: rgba(0,0,0,0.15);
+        border-radius: 3px 0 0 3px;
+    }
+
+    .userphoto {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+</style>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container bootstrap snippet" style="margin-top:30px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-7 col-md-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-th"></span>
+                            @ViewBag.Title.
+                        </h3>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#"></a></div>
+                    </div>
+                    <div class="panel-body">
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-4 col-md-4 separator social-login-box">
+                                <br>
+                                <img id="previewImage" alt="" class="userphoto img-thumbnail" src="~/Content/images/logo.svg">
+                            </div>
+                            <div style="margin-top:20px;padding-left:30px;" class="col-xs-8 col-sm-8 col-md-8 login-box">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.FirstName, new { @class = "col-md-5 control-label" })
+                                    <div class="col-md-7">
+                                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.LastName, new { @class = "col-md-5 control-label" })
+                                    <div class="col-md-7">
+                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })
+                                    <div class="col-md-7">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-5 control-label" })
+                                    <div class="col-md-7">
+                                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-5 control-label" })
+                                    <div class="col-md-7">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-5 control-label" })
+                                    <div class="col-md-7">
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.BirthDate, "Date of Birth", new { @class = "col-md-5 control-label" })
+                                    <div class="col-md-7">
+                                        @Html.TextBoxFor(m => m.BirthDate, new { @class = "datepicker form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.UserProfilePicture, "Profile Photo", new { @class = "col-md-5 control-label" })
+                                    <div class="col-md-7">
+                                        @Html.TextBoxFor(m => m.UserProfilePicture, new { type = "file" })
+                                        @Html.ValidationMessage("CustomMessage")
+                                        <img id="previewImage" src="#" alt="your image" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6"></div>
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <button class="btn icon-btn-save btn-success" type="submit">
+                                    <span class="btn-save-label"><i class="glyphicon glyphicon-floppy-disk"></i></span> Register
+                                </button>
+
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <p>
+                                    @Html.ActionLink("Log In", "login")
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+<script type="text/javascript">
+
+    $(function () {
+        $('.datepicker').datepicker();
+    })
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

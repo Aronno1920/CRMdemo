@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CRM.Entity.Model.CityTypeEntity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>   
+        
+        <th>
+            Name
+        </th>
+        <th>
+            Created By
+        </th>
+        <th>
+            Created Date
+        </th>
+        <th>
+            Updated By
+        </th>
+        <th>
+           Updated Date
+        </th>
+        <th>
+           Is Active?
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedBy.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink(item.IsActive==true?"Inactive":"Active", "Active", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }) 
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,93 @@
+﻿@model CRM.Entity.Model.InteractionEntity
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+
+}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title">Product Detail</h3>
+</div>
+<div class="modal-body">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ChannelType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChannelType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentOutcomeCode.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentOutcomeCode.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Service.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Service.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+
+    </dl>
+</div>
+
+<div class="modal-footer">
+    @*<input class="btn btn-primary" type="submit" name="EditDetails" value="Update" />*@
+    <button class="btn btn-warning" data-dismiss="modal">Close</button>
+
+</div>

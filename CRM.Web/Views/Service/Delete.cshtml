@@ -1,0 +1,184 @@
+﻿@model CRM.Entity.Model.ServiceEntity
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ServiceEntity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlightRoute.Origin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlightRoute.Origin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Priority.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Priority.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceAdditionalDetail.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceAdditionalDetail.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceCenter.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceCenter.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceStatus.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceStatus.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceSupplementalDetail.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceSupplementalDetail.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceTypeDetail.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceTypeDetail.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Station.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Station.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OnsiteAppointmentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OnsiteAppointmentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PNR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PNR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClosedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClosedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

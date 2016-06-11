@@ -1,0 +1,240 @@
+﻿@model CRM.Entity.Model.CustomerEntity
+
+@{
+    ViewBag.Title = "Customer Service";
+}
+
+<h2>Customer Service</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Customer -  <small>Details </small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="btn btn-success" data-modal="" href="/Customer/Create"><i class="glyphicon glyphicon-plus"></i></a>
+                            </li>
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content" style="overflow-x:scroll;width:100%;">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.FullName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.FullName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.MobileNumber)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.MobileNumber)
+                            </dd>
+
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Email)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.FrequentFlyierCode)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.FrequentFlyierCode)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Code)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Code)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.UpdatedDate)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.UpdatedDate)
+                            </dd>
+                        </dl>
+                    </div>
+                </div> 
+              
+            </div>
+            <div class="col-md-6">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Service -  <small>Details </small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="btn btn-success" data-modal="" href="@Url.Action("Create", "Service", new { customerID = Model.ID })"><i class="glyphicon glyphicon-plus"></i></a>
+                            </li>
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content" style="overflow-x:scroll;width:100%;">
+                        @Html.Action("_customerService", "Service", new { customerID = Model.ID })
+                    </div>
+                </div> 
+               
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"> 
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Product -  <small>Details </small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="btn btn-success" data-modal="" href="@Url.Action("Create", "Product", new { customerID = Model.ID })"><i class="glyphicon glyphicon-plus"></i></a>
+                            </li>
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content" style="overflow-x:scroll;width:100%;">
+                        @Html.Action("_customerProduct", "Product", new { customerID = Model.ID })
+                    </div>
+                </div>              
+               
+
+            </div>
+            <div class="col-md-6">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Interaction -  <small>Details </small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="btn btn-success" data-modal="" href="/Interaction/Create"><i class="glyphicon glyphicon-plus"></i></a>
+                            </li>
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="divInteractionContainer" class="x_content" style="overflow-x:scroll;width:100%;">
+                       Interaction Details Coming soon...
+                    </div>
+                </div> 
+            </div>
+        </div>
+
+        </div>
+        <!-- modal placeholder-->
+        <div id='myModal' class='modal fade in'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div id='myModalContent'></div>
+                </div>
+            </div>
+        </div>
+}
+
+
+@section Scripts {
+<script type="text/javascript">
+        $(function () {
+           // alert("345356");
+            $('#gridService tbody tr').hover(function () {
+                
+            $(this).toggleClass('clickable');
+            }).on('click', function () {
+                $('#divInteractionContainer').load('@(Url.Action("_serviceInteraction", "Interaction", null, Request.Url.Scheme))?serviceID=' + $(this).find('td:first').text());
+               // bindEvents();
+          // alert('/Details/' + $(this).find('td:first').text());
+        });
+        });
+    function yourFunction(url) {
+        alert(url);
+
+        //$('#myModalContent').load('/interaction/details/' + url, function () {
+        //    $('#myModal').modal({
+        //        keyboard: true
+        //    }, 'show');
+        //    bindForm(this);
+        //});
+        //alert("done...???");
+        return false;
+    }
+    //function bindEvents() {
+    //    $.ajaxSetup({ cache: false });
+    //    $("a[data-modal]").on("click", function (e) {
+    //        $('#myModalContent2').load(this.href, function () {
+    //            $('#myModal2').modal({
+    //                keyboard: true
+    //            }, 'show');
+    //            bindForm2(this);
+    //        });
+    //        return false;
+    //    });
+    //}
+    //function bindForm2(dialog) {
+    //    // alert(2345);
+    //    $('form', dialog).submit(function () {
+    //        $('#progress').show();
+    //        $.ajax({
+    //            url: this.action,
+    //            type: this.method,
+    //            data: $(this).serialize(),
+    //            success: function (result) {
+    //                if (result.success) {
+    //                    $('#myModal2').modal('hide');
+    //                    $('#progress').hide();
+    //                    location.reload();
+    //                } else {
+    //                    $('#progress').hide();
+    //                    $('#myModalContent2').html(result);
+    //                    bindForm();
+    //                }
+    //            }
+    //        });
+    //        return false;
+    //    });
+    //}
+</script>
+    
+    @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/product")
+}
